@@ -3,63 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lakshadweep Tour Packages</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PackitUp - Lakshadweep Tour Packages</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: rgba(0, 150, 136, 0.9);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 120px;
+            position: absolute;
+            left: 20px;
+            top: 10px;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5rem;
+            margin: 0;
+            color: #ffeb3b;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .package {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 188, 212, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #009688;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            color: #004d40;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .view-details-button {
+            padding: 10px 20px;
+            background-color: #26a69a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .view-details-button:hover {
+            background-color: #00796b;
+        }
+
+        .content {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .details {
+            background-color: #e0f2f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #00897b;
+        }
+
+        .details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .details li {
+            font-size: 16px;
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        .book-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .book-button:hover {
+            background-color: #004d40;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <img src="/PackitUp.jpg" alt="PackItUp Logo" class="w-16 h-16 object-contain">
-                <span class="text-3xl font-black text-blue-600" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); font-family: 'Cooper Black', serif; background: linear-gradient(45deg, #2563eb, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PackItUp</span>
-            </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Packages</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Contact</a>
-            </div>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Book Now</button>
+<body>
+
+    <header>
+        <img src="WhatsApp Image 2025-02-07 at 18.16.03_e0ad69bc.jpg" alt="PackitUp Logo" class="logo">
+        <h1>PackitUp - Lakshadweep Tours</h1>
+    </header>
+
+    <div class="container">
+        <!-- Samudra Package -->
+        <div class="package">
+            <div class="package-title" onclick="toggleDetails(0)">Samudra Package (Agatti)</div>
+            <button class="view-details-button" onclick="toggleDetails(0)">View Details</button>
         </div>
-    </nav>
+        <div class="content" id="package-details-0">
+            <h2>Samudra Package (Agatti)</h2>
+            <div class="details">
+                <h3>3 Nights / 4 Days Tour - ₹20,000</h3>
+                <p>
+                    Explore the pristine beauty of Agatti Island in Lakshadweep, known for its stunning beaches and unique culture. 
+                    Enjoy a hassle-free experience with our PackitUp tour package.
+                </p>
+                <ul>
+                    <li>Duration: 3 Nights / 4 Days</li>
+                    <li>Price: ₹20,000 (for 3 to 4 members)</li>
+                    <li>Accommodation: 2-star stays</li>
+                    <li>Includes: Meals, Sightseeing, Transfers</li>
+                    <li>Activities: Diving, Relaxation, Beach Walks</li>
+                </ul>
+                <a href="#" class="book-button">Book Now</a>
+            </div>
+        </div>
 
-    <!-- Main Content -->
-    <div class="p-4 md:p-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-2xl md:text-4xl font-bold text-blue-800 mb-4 md:mb-8">Popular Lakshadweep Sightseeing Tour Packages</h1>
-            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Explore the pristine beaches and crystal-clear waters of Lakshadweep with our carefully curated tour packages</p>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Tour Package 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <img src="/api/placeholder/800/400" alt="Samudra Packages" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h2 class="text-xl font-semibold text-blue-700 mb-1">Samudra Packages (Agatti & Kavaratti)</h2>
-                        <div class="flex items-center gap-2 text-gray-600 mb-2">
-                            <span>⏳ 5 Nights 6 Days</span>
-                        </div>
-                        <p class="text-xl font-bold text-green-600 mb-4">₹32,800/-</p>
-                        <p class="text-gray-600 mb-4">Experience the pristine beauty of Lakshadweep's most popular islands</p>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">View Details</button>
-                    </div>
-                </div>
+        <!-- Suayi Package -->
+        <div class="package">
+            <div class="package-title" onclick="toggleDetails(1)">Suayi Package (Kavaratti)</div>
+            <button class="view-details-button" onclick="toggleDetails(1)">View Details</button>
+        </div>
+        <div class="content" id="package-details-1">
+            <h2>Suayi Package (Kavaratti)</h2>
+            <div class="details">
+                <h3>5 Nights / 6 Days Tour - ₹35,999</h3>
+                <p>Discover the magic of Kavaratti Island with the Suayi Package, featuring luxury beach cottages and exciting water sports.</p>
+                <ul>
+                    <li>Duration: 5 Nights / 6 Days</li>
+                    <li>Price: ₹35,999 (for 3 to 4 members)</li>
+                    <li>Accommodation: Air-conditioned beach cottages</li>
+                    <li>Includes: Meals, Sightseeing, Transfers</li>
+                    <li>Water Sports: Scuba Diving, Deep-Sea Fishing</li>
+                    <li>Meals: Full board (breakfast, lunch, dinner), tea/coffee</li>
+                    <li>Transfers: Pickup/drop-off at marine jetty</li>
+                </ul>
+                <a href="#" class="book-button">Book Now</a>
+            </div>
+        </div>
 
-                <!-- Tour Package 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <img src="/api/placeholder/800/400" alt="Island Paradise Package" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h2 class="text-xl font-semibold text-blue-700 mb-1">Island Paradise Package</h2>
-                        <div class="flex items-center gap-2 text-gray-600 mb-2">
-                            <span>⏳ 4 Nights 5 Days</span>
-                        </div>
-                        <p class="text-xl font-bold text-green-600 mb-4">₹28,500/-</p>
-                        <p class="text-gray-600 mb-4">Discover the hidden gems of Lakshadweep's coral islands</p>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">View Details</button>
-                    </div>
-                </div>
+        <!-- Scuba Package -->
+        <div class="package">
+            <div class="package-title" onclick="toggleDetails(2)">Scuba Package (Kalpeni)</div>
+            <button class="view-details-button" onclick="toggleDetails(2)">View Details</button>
+        </div>
+        <div class="content" id="package-details-2">
+            <h2>Scuba Package (Kalpeni)</h2>
+            <div class="details">
+                <h3>6 Nights / 7 Days Tour - ₹42,000</h3>
+                <p>Embark on a thrilling water adventure with the Scuba Package, featuring exciting activities like scuba diving, snorkeling, and kayaking at Kalpeni.</p>
+                <ul>
+                    <li>Duration: 6 Nights / 7 Days</li>
+                    <li>Price: ₹42,000 (for 5 to 6 members)</li>
+                    <li>Accommodation: Air-conditioned beach cottages</li>
+                    <li>Includes: Meals, Sightseeing, Transfers</li>
+                    <li>Water Sports: Scuba Diving, Snorkeling, Kayaking</li>
+                    <li>Meals: Full board (breakfast, lunch, dinner), tea/coffee</li>
+                    <li>Transfers: Pickup/drop-off at marine jetty</li>
+                </ul>
+                <a href="#" class="book-button">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Taratashi Package -->
+        <div class="package">
+            <div class="package-title" onclick="toggleDetails(3)">Taratashi Package (Bangaram Atoll)</div>
+            <button class="view-details-button" onclick="toggleDetails(3)">View Details</button>
+        </div>
+        <div class="content" id="package-details-3">
+            <h2>Taratashi Package (Bangaram Atoll)</h2>
+            <div class="details">
+                <h3>7 Nights / 8 Days Tour - ₹68,999</h3>
+                <p>A perfect blend of adventure & relaxation! Enjoy the serene beauty of Bangaram Atoll with exciting activities and full comfort.</p>
+                <ul>
+                    <li>Duration: 7 Nights / 8 Days</li>
+                    <li>Price: ₹68,999 (for 3 to 4 members)</li>
+                    <li>Accommodation: AC beach cottages (Up to 2-star)</li>
+                    <li>Meals: Full board (B/L/D) + Tea/Coffee</li>
+                    <li>Transfers: Agatti Airport pickup & boat to Bangaram</li>
+                    <li>Activities: Scuba Diving, Snorkeling, Kayaking, Deep-Sea Fishing</li>
+                </ul>
+                <a href="#" class="book-button">Book Now</a>
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleDetails(packageIndex) {
+            const content = document.getElementById(`package-details-${packageIndex}`);
+            const isActive = content.classList.contains('active');
+
+            // Hide all package details
+            const allContents = document.querySelectorAll('.content');
+            allContents.forEach((el) => {
+                el.classList.remove('active');
+            });
+
+            // If the clicked package is not active, show its details
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+
 </body>
 </html>
+
+
+
+
+
+
