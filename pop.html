@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin the Wheel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 10px solid #ddd;
+            transform: rotate(0deg);
+            transition: transform 5s ease-out;
+        }
+
+        .wheel .segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: #ffeb3b;
+            clip-path: polygon(100% 0, 0 0, 50% 100%);
+            transform-origin: 100% 100%;
+        }
+
+        .wheel .segment:nth-child(1) {
+            background-color: #ff5252;
+            transform: rotate(0deg);
+        }
+
+        .wheel .segment:nth-child(2) {
+            background-color: #4caf50;
+            transform: rotate(60deg);
+        }
+
+        .wheel .segment:nth-child(3) {
+            background-color: #3f51b5;
+            transform: rotate(120deg);
+        }
+
+        .wheel .segment:nth-child(4) {
+            background-color: #ff9800;
+            transform: rotate(180deg);
+        }
+
+        .wheel .segment:nth-child(5) {
+            background-color: #9c27b0;
+            transform: rotate(240deg);
+        }
+
+        .wheel .segment:nth-child(6) {
+            background-color: #00bcd4;
+            transform: rotate(300deg);
+        }
+
+        .needle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid red;
+            transform: translate(-50%, -100%);
+            z-index: 1;
+        }
+
+        .spin-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .spin-btn:hover {
+            background-color: #004d40;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wheel-container">
+        <div class="wheel" id="wheel">
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+        </div>
+        <div class="needle"></div>
+    </div>
+
+    <button class="spin-btn" onclick="spinWheel()">Spin Now</button>
+
+    <div class="result" id="result">Spin the wheel to see your result!</div>
+
+    <script>
+        const wheel = document.getElementById('wheel');
+        const resultDisplay = document.getElementById('result');
+        const segments = [
+            "50% Discount",
+            "20% Discount",
+            "Better luck next time",
+            "Free coupon card for next visit",
+            "Free entry for a member",
+            "Win a surprise gift"
+        ];
+
+        let isSpinning = false;
+
+        function spinWheel() {
+            if (isSpinning) return;
+            isSpinning = true;
+            const randomDegree = Math.floor(Math.random() * 3600) + 720; // Random spin between 720 and 3600 degrees
+            const segmentAngle = 360 / segments.length;
+            const chosenSegment = Math.floor(((randomDegree % 360) / segmentAngle) % segments.length);
+
+            wheel.style.transform = `rotate(${randomDegree}deg)`;
+
+            setTimeout(() => {
+                isSpinning = false;
+                resultDisplay.textContent = `Result: ${segments[segments.length - chosenSegment - 1]}`;
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
